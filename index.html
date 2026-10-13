@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080b14">
+  <meta name="description" content="VoltClock — a clean, neon-inspired clock with world time, stopwatch, timer and alarm.">
+  <title>VOLTCLOCK</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="VoltClock home">
+      <span class="brand-mark" aria-hidden="true">V</span>
+      <span>VOLT<span class="brand-light">CLOCK</span></span>
+    </a>
+    <nav class="toolbar" aria-label="Clock settings">
+      <button id="lang" class="tool-btn" type="button">English</button>
+      <button id="fmt" class="tool-btn" type="button"></button>
+      <button id="cal" class="tool-btn" type="button"></button>
+      <button id="sec" class="tool-btn is-active" type="button" data-i="sec" aria-pressed="true"></button>
+      <button id="theme" class="tool-btn" type="button" data-i="theme"></button>
+      <button id="full" class="tool-btn" type="button" data-i="full"></button>
+    </nav>
+  </header>
+
+  <main class="shell">
+    <section class="hero panel" aria-label="Main clock">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="live-dot"></span><span data-i="live"></span></div>
+        <div class="digital">
+          <div id="time" role="timer" aria-live="off">--:--:--</div>
+          <div id="date"></div>
+          <div class="timezone-line"><span class="timezone-icon" aria-hidden="true">◷</span><span id="tz"></span></div>
+        </div>
+      </div>
+      <div class="clock-wrap">
+        <svg id="analog" viewBox="-100 -100 200 200" role="img" aria-label="Analog clock face"></svg>
+      </div>
+      <div class="hero-bottom">
+        <span class="hero-caption" data-i="heroCaption"></span>
+        <span class="hero-chip"><span class="chip-dot"></span> VOLT / 01</span>
+      </div>
+    </section>
+
+    <div class="section-heading">
+      <div>
+        <span class="eyebrow muted" data-i="dashboard"></span>
+        <h1 data-i="toolsTitle"></h1>
+      </div>
+      <p data-i="toolsSub"></p>
+    </div>
+
+    <div class="grid">
+      <section class="card world-card">
+        <div class="card-heading">
+          <div class="card-icon" aria-hidden="true">◎</div>
+          <div><h2 data-i="world"></h2><p data-i="worldSub"></p></div>
+        </div>
+        <div id="world" class="world-list"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-heading">
+          <div class="card-icon" aria-hidden="true">↻</div>
+          <div><h2 data-i="sw"></h2><p data-i="swSub"></p></div>
+        </div>
+        <div class="big" id="swd">00:00.00</div>
+        <div class="row">
+          <button id="sws" class="btn btn-primary" type="button"></button>
+          <button id="swl" class="btn btn-secondary" type="button" data-i="lap"></button>
+          <button id="swr" class="btn btn-quiet" type="button" data-i="reset"></button>
+        </div>
+        <div class="laps" id="laps" aria-live="polite"></div>
+      </section>
+
+      <section class="card">
+        <div class="card-heading">
+          <div class="card-icon" aria-hidden="true">◴</div>
+          <div><h2 data-i="tm"></h2><p data-i="tmSub"></p></div>
+        </div>
+        <div class="big" id="tmd">05:00</div>
+        <div class="row">
+          <label class="sr-only" for="tmin" data-i="min"></label>
+          <input id="tmin" type="number" min="1" max="999" value="5" inputmode="numeric">
+          <button id="tms" class="btn btn-primary" type="button"></button>
+          <button id="tmr" class="btn btn-quiet" type="button" data-i="reset"></button>
+        </div>
+        <p class="helper" data-i="timerHint"></p>
+      </section>
+
+      <section class="card alarm-card">
+        <div class="card-heading">
+          <div class="card-icon" aria-hidden="true">♧</div>
+          <div><h2 data-i="al"></h2><p data-i="alSub"></p></div>
+        </div>
+        <div class="big alarm-time" id="ald"></div>
+        <div class="row">
+          <label class="sr-only" for="alt" data-i="altime"></label>
+          <input id="alt" type="time">
+          <button id="als" class="btn btn-primary" type="button"></button>
+        </div>
+        <p class="helper" data-i="alarmHint"></p>
+      </section>
+    </div>
+
+    <footer class="footer">
+      <span>VOLT<span class="brand-light">CLOCK</span></span>
+      <span data-i="footer"></span>
+    </footer>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
